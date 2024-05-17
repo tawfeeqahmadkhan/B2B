@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
-
+import React from "react"
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import FirstPage from "./components/FirstPage"
+import VendorForm from "./components/loginForms/VendorForm"
+import './App.css'
+import './index.css'
+import SupplierForm from "./components/loginForms/SupplierForm"
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-   <>
-   <div>b2b</div>
-   </>
+   <BrowserRouter>
+   <Routes>
+    <Route path="/"  element={<FirstPage/>}/>
+    <Route path="/vendor/signup"  element={<VendorForm/>}/>
+    <Route path="/supplier/signup"  element={<SupplierForm/>}/>
+   </Routes>
+   </BrowserRouter>
   )
 }
 
