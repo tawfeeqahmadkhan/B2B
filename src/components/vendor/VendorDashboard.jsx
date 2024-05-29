@@ -12,6 +12,7 @@ import { FaBorderAll } from "react-icons/fa";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { FiMenu } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
+import Order from '../Order'
 export default function VendorDashboard() {
   const sideNavberList = [
     {
@@ -57,7 +58,7 @@ export default function VendorDashboard() {
     <div>
         <div className=' flex items-center py-[3rem] gap-[1px]  flex-col fixed  h-[100vh] bg-[#121621] text-white w-[20%]  '>
            {sideNavberList.map((item,index)=>(
-             <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem]' onClick={()=>setShowComponent(item.title)} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
+                  showComponent==item.title? <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem] bg-black' onClick={()=>setShowComponent(item.title)} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>: <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem]' onClick={()=>setShowComponent(item.title)} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
            ))}
            
         </div>
@@ -67,7 +68,7 @@ export default function VendorDashboard() {
    {!showSideBar? <FiMenu className='text-2xl ' onClick={()=>setShowSideBar(true)} />:<MdCancel  className='text-4xl mx-40 ' onClick={()=>setShowSideBar(false)}/>}
    {showSideBar? <div className=' flex items-center my-[-2rem] gap-[1px]  flex-col fixed  h-[100vh] bg-[#121621] text-white absolute '>
            {sideNavberList.map((item,index)=>(
-             <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem]' onClick={()=>{setShowComponent(item.title) ;setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
+                   showComponent==item.title? <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem] bg-black' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>: <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem]' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
            ))}
            
         </div>:null}
@@ -78,6 +79,9 @@ export default function VendorDashboard() {
     }
     {
       showComponent=='Products'?<Product/>:null
+    }
+    {
+      showComponent=='Orders'?<Order/>:null
     }
     </div>
    </div> </>
