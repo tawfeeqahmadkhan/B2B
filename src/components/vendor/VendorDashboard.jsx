@@ -13,6 +13,7 @@ import { GrStatusGoodSmall } from "react-icons/gr";
 import { FiMenu } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 import Order from '../Order'
+import Transactions from '../Transactions'
 export default function VendorDashboard() {
   const sideNavberList = [
     {
@@ -64,7 +65,7 @@ export default function VendorDashboard() {
         </div>
     </div>
     </div>
-    <div className='  lg:hidden sm:block sticky w-[2rem] h-[1rem] top-0 p-1 absolute z-[100]'>
+    <div className='  lg:hidden sm:block sticky w-[1rem] h-[1rem] top-0 p-1 absolute z-[100]'>
    {!showSideBar? <FiMenu className='text-2xl ' onClick={()=>setShowSideBar(true)} />:<MdCancel  className='text-4xl mx-40 ' onClick={()=>setShowSideBar(false)}/>}
    {showSideBar? <div className=' flex items-center my-[-2rem] gap-[1px]  flex-col fixed  h-[100vh] bg-[#121621] text-white absolute '>
            {sideNavberList.map((item,index)=>(
@@ -82,6 +83,9 @@ export default function VendorDashboard() {
     }
     {
       showComponent=='Orders'?<Order/>:null
+    }
+    {
+      showComponent=='Transactions'?<Transactions/>:null
     }
     </div>
    </div> </>

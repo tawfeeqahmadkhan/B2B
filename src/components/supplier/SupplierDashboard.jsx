@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import SideNavber from './SideNavber'
 import Overview from './Overview'
 import Product from '../Product'
 import { FaChartColumn,FaClone } from "react-icons/fa6";
@@ -10,11 +9,11 @@ import { MdOutlineLiveHelp } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import Navber from '../Navber'
 import AddProductForm from './AddProduct';
-import { FaBorderAll } from "react-icons/fa";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { FiMenu } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
-import Order from '../Order';
+import MyProducts from './Myproducts';
+import Transactions from '../Transactions';
 export default function SupplierDashboard() {
   const sideNavberList = [
     {
@@ -22,17 +21,14 @@ export default function SupplierDashboard() {
       icon:<FaChartColumn />
     },
     {
-      title:"Products",
+      title:"My Products",
       icon:<FaClone />
     },
     {
       title:"Add Products",
       icon:<IoMdAdd />
     },
-    {
-      title:"Orders",
-      icon:<FaBorderAll />
-    },
+
     {
       title:"Status",
       icon:<GrStatusGoodSmall />
@@ -70,11 +66,11 @@ export default function SupplierDashboard() {
         </div>
     </div>
     </div>
-    <div className='  lg:hidden sm:block sticky w-[2rem] h-[1rem] top-0 p-1 absolute z-[100]'>
+    <div className='  lg:hidden sm:block sticky w-[1rem] h-[1rem] top-0 p-1 absolute z-[100] '>
    {!showSideBar? <FiMenu className='text-2xl ' onClick={()=>setShowSideBar(true)} />:<MdCancel  className='text-4xl mx-40 ' onClick={()=>setShowSideBar(false)}/>}
-   {showSideBar? <div className=' flex items-center my-[-2rem] gap-[1px]  flex-col fixed  h-[100vh] bg-[#121621] text-white absolute '>
+   {showSideBar? <div className=' flex items-center my-[-2rem] gap-[1px]  flex-col fixed  h-[100vh] bg-[#121621] text-white absolute  '>
            {sideNavberList.map((item,index)=>(
-               showComponent==item.title? <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem] bg-black' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>: <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem]' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
+               showComponent==item.title? <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem] bg-black' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>: <div className=' flex gap-[4px] items-center cursor-pointer hover:bg-black p-4 flex-start w-[10rem] ' onClick={()=>{setShowComponent(item.title);setShowSideBar(false)}} key={index} > <span className='text-white'>{item.icon}</span>{item.title}</div>
            ))}
            
         </div>:null}
@@ -84,13 +80,13 @@ export default function SupplierDashboard() {
       showComponent=='Overview'?<Overview/>:null
     }
     {
-      showComponent=='Products'?<Product/>:null
+      showComponent=='My Products'?<MyProducts/>:null
     }
     {
       showComponent=='Add Products'?<AddProductForm/>:null
     }
-     {
-      showComponent=='Orders'?<Order/>:null
+    {
+      showComponent=='Transactions'?<Transactions/>:null
     }
     </div>
    </div></>
